@@ -5,37 +5,22 @@ pragma solidity ^0.7.6;
 pragma abicoder v2;
 
 interface Structs {
-	struct Provider {
-		uint16 chainId;
-		uint16 governanceChainId;
-		bytes32 governanceContract;
-	}
-
-	struct GuardianSet {
-		address[] keys;
-		uint32 expirationTime;
-	}
-
-	struct Signature {
-		bytes32 r;
-		bytes32 s;
-		uint8 v;
-		uint8 guardianIndex;
-	}
-
-	struct VM {
-		uint8 version;
-		uint32 timestamp;
-		uint32 nonce;
-		uint16 emitterChainId;
-		bytes32 emitterAddress;
-		uint64 sequence;
-		uint8 consistencyLevel;
-		bytes payload;
-
-		uint32 guardianSetIndex;
-		Signature[] signatures;
-
-		bytes32 hash;
-	}
+	struct TransferWithPayload {
+        // PayloadID uint8 = 3
+        uint8 payloadID;
+        // Amount being transferred (big-endian uint256)
+        uint256 amount;
+        // Address of the token. Left-zero-padded if shorter than 32 bytes
+        bytes32 tokenAddress;
+        // Chain ID of the token
+        uint16 tokenChain;
+        // Address of the recipient. Left-zero-padded if shorter than 32 bytes
+        bytes32 to;
+        // Chain ID of the recipient
+        uint16 toChain;
+        // Address of the message sender. Left-zero-padded if shorter than 32 bytes
+        bytes32 fromAddress;
+        // An arbitrary payload
+        bytes payload;
+    }
 }
