@@ -3,8 +3,8 @@
 pragma solidity ^0.7.6;
 pragma abicoder v2;
 
-import './shared/SwapHelper.sol';
-import './shared/ITokenBridge.sol';
+import './SwapHelper.sol';
+import './ITokenBridge.sol';
 import 'solidity-bytes-utils/contracts/BytesLib.sol';
 import '@openzeppelin/contracts/token/ERC20/IERC20.sol';
 import '@openzeppelin/contracts/token/ERC20/SafeERC20.sol';
